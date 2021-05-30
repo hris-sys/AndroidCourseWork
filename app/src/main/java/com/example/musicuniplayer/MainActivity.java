@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ListView listView;
-    String[] items;
+    private ListView listView;
+    private String[] items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listViewSong);
         runtimePermission();
-
     }
 
     public void runtimePermission() {
@@ -76,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void displaySongs() {
-        //maybe add an option to change the directory?
         final ArrayList<File> mySongs = findSong(Environment.getExternalStorageDirectory());
 
         items = new String[mySongs.size()];

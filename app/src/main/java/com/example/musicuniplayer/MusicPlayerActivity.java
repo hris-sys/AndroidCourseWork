@@ -25,18 +25,19 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MusicPlayerActivity extends AppCompatActivity {
-    Button btnPlay, btnNextSong, btnPreviousSong, btnFastForward, btnFastRewind;
-    TextView txtSongName, txtStart, txtStop;
-    SeekBar seekBar;
-    WaveVisualizer barVisualizer;
-
-    String songName;
+    private Button btnPlay, btnNextSong, btnPreviousSong, btnFastForward, btnFastRewind;
+    private TextView txtSongName, txtStart, txtStop;
+    private SeekBar seekBar;
+    private WaveVisualizer barVisualizer;
     public static final String EXTRA_NAME = "song_name";
-    static MediaPlayer mediaPlayer;
-    int position;
-    ArrayList<File> mySongs;
-    ImageView songImage;
-    Thread updateSeekBar;
+    private static MediaPlayer mediaPlayer;
+    private int position;
+
+    private ArrayList<File> mySongs;
+    private ImageView songImage;
+    private String songName;
+    private Thread updateSeekBar;
+    private String endSongTime;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -87,6 +88,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         songName = intent.getStringExtra("songName");
         position = bundle.getInt("pos", 0);
         txtSongName.setSelected(true);
+
         Uri uri = Uri.parse(mySongs.get(position).toString());
 
         songName = mySongs.get(position).getName();
@@ -134,8 +136,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
-        String endTime = createTime(mediaPlayer.getDuration());
-        txtStop.setText(endTime);
+        endSongTime = createTime(mediaPlayer.getDuration());
+        txtStop.setText(endSongTime);
 
         final Handler handler = new Handler();
         final int delay = 1000;
@@ -177,6 +179,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
                 Uri u = Uri.parse(mySongs.get(position).toString());
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), u);
+                endSongTime = createTime(mediaPlayer.getDuration());
+                txtStop.setText(endSongTime);
+
                 songName = mySongs.get(position).getName();
                 txtSongName.setText(songName);
                 mediaPlayer.start();
@@ -197,6 +202,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
                 Uri u = Uri.parse(mySongs.get(position).toString());
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), u);
+                endSongTime = createTime(mediaPlayer.getDuration());
+                txtStop.setText(endSongTime);
+
                 songName = mySongs.get(position).getName();
                 txtSongName.setText(songName);
                 mediaPlayer.start();
