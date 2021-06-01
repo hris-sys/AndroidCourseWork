@@ -19,11 +19,9 @@
         <TextView
             android:id="@+id/txtSongName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_height="30dp"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
-            android:padding="10dp"
             android:singleLine="true"
             android:text="Song Name"
             android:textAlignment="center"
@@ -34,26 +32,17 @@
 
         </TextView>
 
-        <ImageView
-            android:id="@+id/songImage"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/songdefaulticon">
-
-        </ImageView>
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp">
 
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="250dp"
+                android:layout_width="500dp"
+                android:layout_marginTop="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
-                android:layout_margin="20dp"
                 android:layout_marginBottom="40dp">
 
             </SeekBar>
@@ -90,7 +79,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_weight="3">
 
         <RelativeLayout
@@ -104,7 +93,6 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/ic_pause"
                 app:backgroundTint="@color/white">
-
             </Button>
 
             <Button
@@ -155,7 +143,7 @@
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/blast"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 custom:avDensity="0.5"
                 custom:avType="outline"

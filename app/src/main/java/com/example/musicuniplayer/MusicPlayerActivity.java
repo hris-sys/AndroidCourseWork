@@ -244,9 +244,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     public void startSongFromEvents(){
         Uri u = Uri.parse(mySongs.get(position).toString());
         mediaPlayer = MediaPlayer.create(getApplicationContext(), u);
-        mediaPlayer.start();
-        mediaPlayer.seekTo(0);
-
         endTime = createTime(mediaPlayer.getDuration());
         txtSongStop.setText(endTime);
 
@@ -260,5 +257,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
         if (audiosessionId != -1) {
             visualizer.setAudioSessionId(audiosessionId);
         }
+
+        mediaPlayer.start();
+        mediaPlayer.seekTo(0);
     }
 }
